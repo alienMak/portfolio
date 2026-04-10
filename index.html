@@ -46,13 +46,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .avatar-container{width:200px;height:200px;position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--border-red2);cursor:pointer}
 .avatar-container::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--red),transparent);z-index:10}
 .avatar-label{font-family:var(--mono);font-size:9px;color:var(--red);letter-spacing:.1em;text-align:center;margin-top:8px;opacity:.7}
-canvas#decryptCanvas{
-  width:200px;
-  height:200px;
-  display:block;
-  image-rendering:auto;
-  filter:contrast(1.03) saturate(1.05) drop-shadow(0 0 10px rgba(0,229,160,0.08));
-}
+canvas#decryptCanvas{width:200px;height:200px;display:block;image-rendering:pixelated}
 .vishwar-section{background:var(--bg2);border-top:.5px solid var(--border-red);border-bottom:.5px solid var(--border-red);padding:5rem 2.5rem}
 .vishwar-inner{max-width:1000px;margin:0 auto}
 .section-header{display:flex;align-items:center;gap:1rem;margin-bottom:2.5rem}
@@ -221,13 +215,7 @@ footer{text-align:center;padding:2rem;border-top:.5px solid var(--border);font-f
   .exp-item{grid-template-columns:1fr}.exp-item::before,.exp-item::after{display:none}.exp-r{padding-left:0;padding-top:.5rem}
   .contact-grid{grid-template-columns:1fr}
   .speak-grid{grid-template-columns:1fr}.flip-card{height:320px}
-  .avatar-container{width:160px;height:160px}canvas#decryptCanvas{
-  width:200px;
-  height:200px;
-  display:block;
-  image-rendering:auto;
-  filter:contrast(1.03) saturate(1.05) drop-shadow(0 0 10px rgba(0,229,160,0.08));
-}
+  .avatar-container{width:160px;height:160px}canvas#decryptCanvas{width:160px;height:160px}
 }
 </style>
 </head>
@@ -259,7 +247,7 @@ footer{text-align:center;padding:2rem;border-top:.5px solid var(--border);font-f
     </div>
     <div class="avatar-wrap">
       <div class="avatar-container" id="avatarContainer">
-        <canvas id="decryptCanvas" width="800" height="800"></canvas>
+        <canvas id="decryptCanvas" width="400" height="400"></canvas>
       </div>
       <div class="avatar-label">// identity_decrypted.jpg</div>
     </div>
@@ -699,40 +687,5 @@ document.querySelectorAll('.proj-card').forEach(card=>{
   card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');card.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');});
 });
 </script>
-
-<script>
-(function(){
-const canvas=document.getElementById('decryptCanvas');
-if(!canvas) return;
-const ctx=canvas.getContext('2d');
-const img=new Image();
-img.src='1.jpg';
-let progress=0;
-function draw(){
-const w=canvas.width,h=canvas.height;
-ctx.clearRect(0,0,w,h);
-const blur=(1-progress)*8;
-ctx.filter=`blur(${blur}px) contrast(1.05)`;
-ctx.drawImage(img,0,0,w,h);
-ctx.filter='none';
-if(progress<1){
-for(let i=0;i<20*(1-progress);i++){
-const y=Math.random()*h;
-const h2=Math.random()*20;
-const dx=(Math.random()-0.5)*30;
-ctx.globalAlpha=0.1;
-ctx.drawImage(canvas,0,y,w,h2,dx,y,w,h2);
-}
-progress+=0.02;
-requestAnimationFrame(draw);
-}else{
-ctx.globalAlpha=1;
-ctx.drawImage(img,0,0,w,h);
-}
-}
-img.onload=()=>draw();
-})();
-</script>
-
 </body>
 </html>
