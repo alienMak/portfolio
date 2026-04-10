@@ -46,7 +46,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .avatar-container{width:200px;height:200px;position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--border-red2);cursor:pointer}
 .avatar-container::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--red),transparent);z-index:10}
 .avatar-label{font-family:var(--mono);font-size:9px;color:var(--red);letter-spacing:.1em;text-align:center;margin-top:8px;opacity:.7}
-canvas#decryptCanvas{width:200px;height:200px;display:block;image-rendering:pixelated}
+canvas#decryptCanvas{width:200px;height:200px;display:block;image-rendering:auto}
 .vishwar-section{background:var(--bg2);border-top:.5px solid var(--border-red);border-bottom:.5px solid var(--border-red);padding:5rem 2.5rem}
 .vishwar-inner{max-width:1000px;margin:0 auto}
 .section-header{display:flex;align-items:center;gap:1rem;margin-bottom:2.5rem}
@@ -247,7 +247,7 @@ footer{text-align:center;padding:2rem;border-top:.5px solid var(--border);font-f
     </div>
     <div class="avatar-wrap">
       <div class="avatar-container" id="avatarContainer">
-        <canvas id="decryptCanvas" width="400" height="400"></canvas>
+        <canvas id="decryptCanvas" width="800" height="800"></canvas>
       </div>
       <div class="avatar-label">// identity_decrypted.jpg</div>
     </div>
