@@ -260,8 +260,8 @@ footer{text-align:center;padding:2rem;border-top:.5px solid var(--border);font-f
       <p class="hero-desc" id="hero-desc"></p>
       <div class="hero-cta">
         <a class="btn-p" href="#vishwar">↓ explore VISHWAR</a>
-        <a class="btn-o" href="mailto&#58;mayukhp27&#64;gmail&#46;com">get in touch</a>
-        <a class="btn-o" href="https://www.linkedin.com/in/mayukh-paul-37b176190/" target="_blank">linkedin</a>
+        <a class="btn-o" id="btn-contact" href="javascript:void(0)">get in touch</a>
+        <a class="btn-o" href="https://www.linkedin.com/in/mayukh-paul-37b176190/" target="_blank" rel="noopener">linkedin</a>
         <a class="btn-o" href="#publications">publications</a>
       </div>
     </div>
@@ -854,6 +854,9 @@ document.querySelectorAll('.pub-row[data-pub]').forEach(row=>{
     });
   }
 });
+
+
+var c=document.getElementById('btn-contact');if(c){c.addEventListener('click',function(e){e.preventDefault();window.location.href='mai'+'lto:'+'mayukhp27'+'@'+'gmail.com';});}
 
 </script>
 </body>
