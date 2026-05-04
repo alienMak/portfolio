@@ -251,6 +251,9 @@ footer{text-align:center;padding:2rem;border-top:.5px solid var(--border);font-f
   .avatar-container{width:160px;height:160px}canvas#decryptCanvas{width:160px;height:160px}
   .pub-expand{grid-template-columns:1fr}.pub-full{grid-column:1}
 }
+
+.pub-read-btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;letter-spacing:.07em;padding:6px 16px;border-radius:3px;background:transparent;color:var(--teal);border:1px solid var(--border2);text-decoration:none;transition:all .2s;margin-top:.5rem}
+.pub-read-btn:hover{background:var(--teal-dim);border-color:var(--teal);color:var(--teal)}
 </style>
 </head>
 <body>
@@ -479,7 +482,7 @@ footer{text-align:center;padding:2rem;border-top:.5px solid var(--border);font-f
     </a>
     <div class="pub-panel" id="panel-isrm">
       <div class="pub-expand">
-        <div class="pub-summary">The Jedi Order had millennia of training, Force-sensitivity, and institutional knowledge — and were wiped out in minutes. Not by a superior weapon. By a verbal command that exploited trust, authority, and the psychological architecture of the clone army. This article uses Order 66 as a lens to examine why human-layer failures are categorically different from technical ones — and why no firewall could have stopped it.</div>
+        <div class="pub-summary">The Jedi Order had millennia of training, Force-sensitivity, and institutional knowledge — and were wiped out in minutes. Not by a superior weapon. By a verbal command that exploited trust, authority, and the psychological architecture of the clone army. This article uses Order 66 as a lens to examine why human-layer failures are categorically different from technical ones — and why no firewall could have stopped it.<br><br><a href="https://isrm.org.au/isrm-global-journal-risk-and-resilience-through-the-lens-of-star-wars-4-may-2026/" target="_blank" rel="noopener" class="pub-read-btn">↗ read article</a></div>
         <div class="pub-col">
           <div class="pub-label">Thought Process / Insight</div>
           <div class="pub-insight-title">Order 66 wasn't a breach. It was a behavioral exploit.</div>
@@ -507,7 +510,7 @@ footer{text-align:center;padding:2rem;border-top:.5px solid var(--border);font-f
     </a>
     <div class="pub-panel" id="panel-nexphisher">
       <div class="pub-expand">
-        <div class="pub-summary">Phishing remains the entry point for a significant percentage of breaches worldwide. NexPhisher automates the creation of convincing phishing pages for major platforms — making it trivially easy to deploy credential-harvesting attacks. This article demonstrates the process end-to-end, showing just how low the technical barrier to launching a phishing campaign actually is.</div>
+        <div class="pub-summary">Phishing remains the entry point for a significant percentage of breaches worldwide. NexPhisher automates the creation of convincing phishing pages for major platforms — making it trivially easy to deploy credential-harvesting attacks. This article demonstrates the process end-to-end, showing just how low the technical barrier to launching a phishing campaign actually is.<br><br><a href="https://hakin9.org/product/targeted-phishing-attacks/" target="_blank" rel="noopener" class="pub-read-btn">↗ read article</a></div>
         <div class="pub-col">
           <div class="pub-label">Thought Process / Insight</div>
           <div class="pub-insight-title">The barrier to launching a phishing attack is embarrassingly low.</div>
@@ -535,7 +538,7 @@ footer{text-align:center;padding:2rem;border-top:.5px solid var(--border);font-f
     </a>
     <div class="pub-panel" id="panel-hydra">
       <div class="pub-expand">
-        <div class="pub-summary">Hydra is a fast, parallelized login cracker that supports dozens of protocols — SSH, FTP, HTTP, RDP, and more. This article demonstrates how Hydra executes brute force attacks against login systems, showing the mechanics of credential guessing at scale and what makes certain systems more resistant to this class of attack than others.</div>
+        <div class="pub-summary">Hydra is a fast, parallelized login cracker that supports dozens of protocols — SSH, FTP, HTTP, RDP, and more. This article demonstrates how Hydra executes brute force attacks against login systems, showing the mechanics of credential guessing at scale and what makes certain systems more resistant to this class of attack than others.<br><br><a href="https://hakin9.org/product/brute-forcing-and-supply-chain-attacks/" target="_blank" rel="noopener" class="pub-read-btn">↗ read article</a></div>
         <div class="pub-col">
           <div class="pub-label">Thought Process / Insight</div>
           <div class="pub-insight-title">Brute force attacks are a failure of access control design, not just password strength.</div>
@@ -563,7 +566,7 @@ footer{text-align:center;padding:2rem;border-top:.5px solid var(--border);font-f
     </a>
     <div class="pub-panel" id="panel-john">
       <div class="pub-expand">
-        <div class="pub-summary">John the Ripper is one of the most widely used password cracking tools in security testing. Using dictionary attacks and wordlists, it systematically tests password hashes until it finds a match. This article demonstrates how John works in practice — showing how quickly weak passwords fall and what that means for organizations relying on passwords as a primary control.</div>
+        <div class="pub-summary">John the Ripper is one of the most widely used password cracking tools in security testing. Using dictionary attacks and wordlists, it systematically tests password hashes until it finds a match. This article demonstrates how John works in practice — showing how quickly weak passwords fall and what that means for organizations relying on passwords as a primary control.<br><br><a href="https://hakin9.org/product/best-hacking-techniques/" target="_blank" rel="noopener" class="pub-read-btn">↗ read article</a></div>
         <div class="pub-col">
           <div class="pub-label">Thought Process / Insight</div>
           <div class="pub-insight-title">A cracked password isn't a technical failure — it's a behavioral one.</div>
@@ -591,7 +594,7 @@ footer{text-align:center;padding:2rem;border-top:.5px solid var(--border);font-f
     </a>
     <div class="pub-panel" id="panel-ransomware">
       <div class="pub-expand">
-        <div class="pub-summary">Malware doesn't have to be complex to be destructive. This article demonstrates two types of malware — SARA (Simple Android Ransomware) and the Mrs. Major virus — showing how they're constructed, how they behave, and what damage they cause. The goal is understanding how these threats work from the inside, not just defending against them from the outside.</div>
+        <div class="pub-summary">Malware doesn't have to be complex to be destructive. This article demonstrates two types of malware — SARA (Simple Android Ransomware) and the Mrs. Major virus — showing how they're constructed, how they behave, and what damage they cause. The goal is understanding how these threats work from the inside, not just defending against them from the outside.<br><br><a href="https://hakin9.org/product/ransomware-and-vulnerability-management/" target="_blank" rel="noopener" class="pub-read-btn">↗ read article</a></div>
         <div class="pub-col">
           <div class="pub-label">Thought Process / Insight</div>
           <div class="pub-insight-title">You can't defend against what you don't understand.</div>
@@ -619,7 +622,7 @@ footer{text-align:center;padding:2rem;border-top:.5px solid var(--border);font-f
     </a>
     <div class="pub-panel" id="panel-spiderfoot">
       <div class="pub-expand">
-        <div class="pub-summary">OSINT is the starting point of almost every real-world attack. SpiderFoot automates reconnaissance across 100+ data sources — IP addresses, email accounts, social media footprints, domain intelligence, and more. This article demonstrates how much information is openly available about any target and how attackers use it before launching a campaign.</div>
+        <div class="pub-summary">OSINT is the starting point of almost every real-world attack. SpiderFoot automates reconnaissance across 100+ data sources — IP addresses, email accounts, social media footprints, domain intelligence, and more. This article demonstrates how much information is openly available about any target and how attackers use it before launching a campaign.<br><br><a href="https://hakin9.org/product/socmint-for-hackers/" target="_blank" rel="noopener" class="pub-read-btn">↗ read article</a></div>
         <div class="pub-col">
           <div class="pub-label">Thought Process / Insight</div>
           <div class="pub-insight-title">Most people don't realize how much they've already leaked.</div>
@@ -647,7 +650,7 @@ footer{text-align:center;padding:2rem;border-top:.5px solid var(--border);font-f
     </a>
     <div class="pub-panel" id="panel-spynote">
       <div class="pub-expand">
-        <div class="pub-summary">SpyNote is an Android Remote Access Trojan developed by Redmask that gives an attacker near-complete control over a victim's device — camera, microphone, files, messages. This article breaks down SpyNote's capabilities with real usage examples, covering how it's deployed and what it can actually do once it's on a device.</div>
+        <div class="pub-summary">SpyNote is an Android Remote Access Trojan developed by Redmask that gives an attacker near-complete control over a victim's device — camera, microphone, files, messages. This article breaks down SpyNote's capabilities with real usage examples, covering how it's deployed and what it can actually do once it's on a device.<br><br><a href="https://hakin9.org/product/android-hacking/" target="_blank" rel="noopener" class="pub-read-btn">↗ read article</a></div>
         <div class="pub-col">
           <div class="pub-label">Thought Process / Insight</div>
           <div class="pub-insight-title">RATs don't need to be sophisticated to be dangerous.</div>
@@ -675,7 +678,7 @@ footer{text-align:center;padding:2rem;border-top:.5px solid var(--border);font-f
     </a>
     <div class="pub-panel" id="panel-windows">
       <div class="pub-expand">
-        <div class="pub-summary">Windows Hello's facial recognition was adopted by over 84% of Windows 10 users as a passwordless authentication method. This article documents a real security flaw (CVE score 5.7) where specially crafted infrared images could bypass the biometric authentication entirely, granting unauthorized access without the legitimate user's face.</div>
+        <div class="pub-summary">Windows Hello's facial recognition was adopted by over 84% of Windows 10 users as a passwordless authentication method. This article documents a real security flaw (CVE score 5.7) where specially crafted infrared images could bypass the biometric authentication entirely, granting unauthorized access without the legitimate user's face.<br><br><a href="https://worldcybersecurityforum.blogspot.com/2021/08/bypassingwindowsFR.html?m=1" target="_blank" rel="noopener" class="pub-read-btn">↗ read article</a></div>
         <div class="pub-col">
           <div class="pub-label">Thought Process / Insight</div>
           <div class="pub-insight-title">Biometrics shift the attack surface — they don't eliminate it.</div>
