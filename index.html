@@ -297,10 +297,17 @@ footer{text-align:center;padding:2rem;border-top:.5px solid var(--border);font-f
 .rc-pills span{font-family:var(--mono);font-size:10px;padding:3px 10px;border-radius:2px;background:var(--bg3);color:var(--muted);border:.5px solid var(--border)}
 .nav-resume{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--teal);text-decoration:none;padding:5px 14px;border-radius:2px;border:.5px solid var(--border2);transition:all .2s;white-space:nowrap;cursor:pointer}
 .nav-resume:hover{background:var(--teal-dim);color:var(--teal);border-color:var(--teal)}
+
+/* Symbiote button state */
+.btn-resume.symbiote-active{border-color:var(--red) !important;color:#fff;box-shadow:0 0 18px rgba(255,45,75,0.4)}
+.btn-resume.symbiote-active::before{opacity:1}
 </style>
 </head>
 <body>
 
+
+<!-- SYMBIOTE OVERLAY -->
+<canvas id="symbiote-canvas" style="position:fixed;inset:0;pointer-events:none;z-index:99;"></canvas>
 <nav>
   <div class="nav-logo">mayukh@paul:~$<span class="blink">▋</span></div>
   <div class="nav-links">
@@ -326,9 +333,7 @@ footer{text-align:center;padding:2rem;border-top:.5px solid var(--border);font-f
         <a class="btn-o" href="#" id="btn-contact">get in touch</a>
         <a class="btn-resume" id="btn-resume" href="javascript:void(0)">⬡ resume</a>
         <a class="btn-o" href="https://www.linkedin.com/in/mayukh-paul-37b176190/" target="_blank" rel="noopener">linkedin</a>
-        <a class="btn-o" href="https://github.com/alienMak" target="_blank" rel="noopener noreferrer">github</a>
         <a class="btn-o" href="#publications">publications</a>
-        <a class="btn-o" href="research-statement.html">research statement</a>
       </div>
     </div>
     <div class="avatar-wrap">
@@ -376,20 +381,6 @@ footer{text-align:center;padding:2rem;border-top:.5px solid var(--border);font-f
       <div class="pillar"><div class="pillar-num">PILLAR 03</div><div class="pillar-title">Adaptive Awareness Training</div><div class="pillar-desc">Training that adapts based on individual risk profiles — beyond one-size-fits-all compliance training.</div></div>
       <div class="pillar"><div class="pillar-num">PILLAR 04</div><div class="pillar-title">Organizational Resilience</div><div class="pillar-desc">Treating the human layer as a measurable, improvable attack surface within the organization.</div></div>
     </div>
-    <!-- Public research record for VISHWAR. Private code and lab stay private. -->
-    <div class="reveal" id="vishwar-research" style="margin-top:2.5rem;padding:1.8rem;border:1px solid var(--border2);background:linear-gradient(135deg,var(--teal-dim),rgba(255,45,75,.025));border-radius:5px">
-      <div style="font-family:var(--mono);font-size:10px;letter-spacing:.15em;color:var(--teal);margin-bottom:.7rem">RESEARCH LOG // CONTINUOUS WORK</div>
-      <h3 style="color:#fff;font-size:clamp(22px,3vw,30px);margin:0 0 .9rem">Beyond the simulation: studying how human cyber risk changes.</h3>
-      <p style="color:var(--text);font-size:14px;line-height:1.85;max-width:850px;margin-bottom:1.1rem">VISHWAR started with a question I keep returning to: what can people's decisions under pressure tell us that a training-completion score cannot? Alongside the platform, I maintain a research record that challenges the measurement approach, tracks relevant human-factors literature, and tests new ideas before treating them as reliable features.</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:1.25rem 0">
-        <div style="padding:1rem;border:1px solid var(--border);background:var(--bg2)"><div style="font-family:var(--mono);color:var(--teal);font-size:10px;letter-spacing:.08em;margin-bottom:.5rem">01 / EVIDENCE</div><div style="font-size:13px;line-height:1.65">Literature review, methodological critique, and explicit research gaps.</div></div>
-        <div style="padding:1rem;border:1px solid var(--border);background:var(--bg2)"><div style="font-family:var(--mono);color:var(--teal);font-size:10px;letter-spacing:.08em;margin-bottom:.5rem">02 / EXPERIMENTS</div><div style="font-size:13px;line-height:1.65">Synthetic-data tests of behavioral measures, scenario design, and forecast calibration.</div></div>
-        <div style="padding:1rem;border:1px solid var(--border);background:var(--bg2)"><div style="font-family:var(--mono);color:var(--teal);font-size:10px;letter-spacing:.08em;margin-bottom:.5rem">03 / ENGINEERING</div><div style="font-size:13px;line-height:1.65">Version-linked technical documentation, feature histories, and reproducibility checks.</div></div>
-      </div>
-      <p style="font-family:var(--mono);font-size:11px;color:var(--muted);line-height:1.7;margin-bottom:1rem">The public archive records research in progress. Experiments and technical audits are not claims of peer-reviewed validation or deployed capabilities.</p>
-      <a href="https://github.com/alienMak/human-cyber-risk-research" target="_blank" rel="noopener noreferrer" class="btn-o" style="display:inline-flex">↗ explore public research archive</a>
-      <a href="https://github.com/alienMak/human-cyber-risk-research/blob/main/architecture/README.md" target="_blank" rel="noopener noreferrer" class="btn-o" style="display:inline-flex;margin-left:10px">↗ architecture &amp; methodology</a>
-    </div>
   </div>
 </section>
 
@@ -402,15 +393,6 @@ footer{text-align:center;padding:2rem;border-top:.5px solid var(--border);font-f
     <div class="research-card"><div class="rc-tag">FOCUS AREA</div><div class="rc-title">Usable Security & Risk Decisions</div><div class="rc-desc">How people make security decisions under risk and how to design systems that nudge better choices.</div></div>
     <div class="research-card"><div class="rc-tag">FOCUS AREA</div><div class="rc-title">Security Architecture for AI Systems</div><div class="rc-desc">Designing and evaluating security architectures for AI-driven SaaS platforms — applied daily at PR3CORIA.</div></div>
     <div class="research-card"><div class="rc-tag">FOCUS AREA</div><div class="rc-title">Organizational Resilience & Risk Intelligence</div><div class="rc-desc">Moving organizations from reactive compliance to proactive, data-driven human risk management.</div></div>
-    <div class="research-card"><div class="rc-tag">RESEARCH DIRECTION</div><div class="rc-title">Longitudinal Human Cyber-Risk Measurement</div><div class="rc-desc">Understanding how security decisions change over time, how repeated exposure affects behavior, and what behavioral evidence can—and cannot—tell us about risk.</div></div>
-    <div class="research-card"><div class="rc-tag">RESEARCH DIRECTION</div><div class="rc-title">Learning Transfer Across Attack Contexts</div><div class="rc-desc">Investigating whether safer decisions learned in one social-engineering scenario carry over to unfamiliar attacks, channels, and moments of pressure.</div></div>
-    <div class="research-card"><div class="rc-tag">RESEARCH DIRECTION</div><div class="rc-title">Computational Socio-Technical Modeling</div><div class="rc-desc">Using simulation, agent-based and network-oriented models to examine how people, organizational structures, and technology interact to shape collective cyber risk.</div></div>
-    <div class="research-card"><div class="rc-tag">RESEARCH DIRECTION</div><div class="rc-title">Responsible Human–AI Decision Support</div><div class="rc-desc">Studying how explainable, uncertainty-aware AI can support security decisions and targeted interventions without overstating predictions or replacing human judgment.</div></div>
-  </div>
-  <div style="margin-top:24px;padding:20px 22px;border:1px solid var(--border2);border-radius:4px;background:var(--bg2)">
-    <div style="font-family:var(--mono);font-size:10px;color:var(--teal);letter-spacing:.1em;margin-bottom:8px">RESEARCH DIRECTION // IN DEPTH</div>
-    <p style="font-size:14px;line-height:1.7;color:var(--text);margin-bottom:12px">The interests above connect to one larger question: how do we measure security behavior over time without mistaking training performance for real-world resilience?</p>
-    <a class="btn-o" href="research-statement.html">↗ read my research statement</a>
   </div>
 </div>
 
@@ -541,23 +523,6 @@ footer{text-align:center;padding:2rem;border-top:.5px solid var(--border);font-f
 
 <div class="std-section" id="publications">
   <div class="section-header"><span class="section-num">09 //</span><span class="section-title">Publications</span></div>
-  <div style="border:1px solid var(--border2);background:var(--bg2);padding:22px;margin:18px 0 28px;border-radius:4px">
-    <div style="font-family:var(--mono);color:var(--teal);font-size:11px;letter-spacing:.11em;margin-bottom:12px">RESEARCH OUTPUTS // NAVIGATION</div>
-    <p style="color:var(--text);font-size:14px;line-height:1.7;margin-bottom:15px">My work began with hands-on technical security research—phishing, reconnaissance, credential attacks, and malware analysis—documented in practitioner articles for Hakin9. Those articles are not VISHWAR studies, but that work gave me a technical understanding of attack mechanisms. My later research asks a different question: how do people make security decisions when they encounter those attacks? I keep practitioner writing, research articles, and ongoing experiments clearly distinguished.</p>
-    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px">
-      <a class="btn-o" href="research-statement.html">↗ research statement</a>
-      <a class="btn-o" href="https://orcid.org/0009-0001-6597-9702" target="_blank" rel="noopener noreferrer">↗ ORCID record</a>
-      <a class="btn-o" href="https://github.com/alienMak/human-cyber-risk-research" target="_blank" rel="noopener noreferrer">↗ research archive</a>
-      <a class="btn-o" href="https://github.com/alienMak/human-cyber-risk-research/tree/main/experiments/equal-ctr-different-behavior" target="_blank" rel="noopener noreferrer">↗ reproducible experiment</a>
-    </div>
-    <div style="font-family:var(--mono);font-size:11px;color:var(--muted);line-height:1.9">
-      <strong style="color:var(--teal)">RESEARCH ARTICLE</strong> · VISHWAR longitudinal framework (EIU, May 2026)<br>
-      <strong style="color:var(--teal)">THEMATIC JOURNAL ARTICLE</strong> · Order 66 and the human layer (ISRM, May 2026)<br>
-      <strong style="color:var(--teal)">TECHNICAL FOUNDATION</strong> · Hakin9 practitioner articles on attack methods and security investigation<br>
-      <strong style="color:var(--teal)">ONGOING RESEARCH</strong> · Literature review, synthetic methods experiments and technical analyses
-    </div>
-    <p style="color:var(--muted);font-size:12px;line-height:1.7;margin:14px 0 0">Publication type is not a claim about peer-review status. Study findings and generalizability should be evaluated from the primary article and its methods.</p>
-  </div>
   <div class="pub-list">
 <div class="pub-item">
     <a class="pub-row" href="https://publishing.eiu.ac/research-article/measuring-what-training-cannot-see-vishwar-as-a-longitudinal-framework-for-human-cyber-risk-assessment/#tab-document" target="_blank" rel="noopener" onclick="togglePub(event,'eiu')">
@@ -848,7 +813,6 @@ footer{text-align:center;padding:2rem;border-top:.5px solid var(--border);font-f
       <div class="contact-links">
         <a class="cl" href="#" id="cl-email"><span class="cl-ico">[✉]</span>mayukhp27@gmail.com</a>
         <a class="cl" href="https://www.linkedin.com/in/mayukh-paul-37b176190/" target="_blank" rel="noopener"><span class="cl-ico">[in]</span>linkedin/mayukh-paul</a>
-        <a class="cl" href="https://github.com/alienMak" target="_blank" rel="noopener noreferrer"><span class="cl-ico">[gh]</span>github/alienMak</a>
         <a class="cl" href="https://orcid.org/0009-0001-6597-9702" target="_blank" rel="noopener"><span class="cl-ico">[id]</span>ORCID: 0009-0001-6597-9702</a>
         <a class="cl" href="tel:+16462872769"><span class="cl-ico">[☎]</span>(646) 287-2769</a>
       </div>
@@ -962,6 +926,238 @@ document.querySelectorAll('.proj-card').forEach(function(card){
     card.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
   });
 });
+
+
+// ── SYMBIOTE v9 — tentacles emerge, slowly all rotate toward mouse ──
+(function(){
+  var sc=document.getElementById('symbiote-canvas');
+  var sctx=sc.getContext('2d');
+
+  var targets=[
+    {id:'btn-contact',    alt:"let's collaborate", orig:'get in touch'},
+    {id:'nav-resume-btn', alt:'⬡ declassify',      orig:'⬡ resume'}
+  ];
+  targets.forEach(function(t){
+    t.btn=document.getElementById(t.id);
+    t.pct=0; t.morphed=false; t.glitching=false;
+    t.pullX=0; t.pullY=0;
+    t.tentacles=[];
+    for(var i=0;i<8;i++){
+      var base=(i/8)*Math.PI*2;
+      t.tentacles.push({
+        baseAngle:    base,
+        currentAngle: base,
+        phase:        Math.random()*Math.PI*2,
+        phaseB:       Math.random()*Math.PI*2,
+        spd:          0.022+Math.random()*0.018,
+        spdB:         0.015+Math.random()*0.012,
+        thickBase:    6+Math.random()*8,
+        segments:     12,
+        reachMult:    0.7+Math.random()*0.6,
+        wobbleDir:    Math.random()>0.5?1:-1
+      });
+    }
+  });
+
+  var mx=window.innerWidth/2, my=window.innerHeight/2;
+  function resize(){sc.width=window.innerWidth;sc.height=window.innerHeight;}
+  resize();
+  window.addEventListener('resize',resize);
+  window.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;});
+
+  var GLITCH='01#$@░▒▓!%';
+  function glitch(btn,to,cb){
+    var n=0;
+    var iv=setInterval(function(){
+      if(n>8){clearInterval(iv);btn.textContent=to;if(cb)cb();return;}
+      btn.textContent=Array.from({length:Math.max(to.length,6)},
+        function(){return GLITCH[Math.floor(Math.random()*GLITCH.length)];}).join('');
+      n++;
+    },40);
+  }
+
+  function R(b){var r=b.getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+r.height/2,w:r.width,h:r.height};}
+  function D(ax,ay,bx,by){return Math.sqrt((ax-bx)*(ax-bx)+(ay-by)*(ay-by));}
+  function lerpAngle(a,b,t){
+    var d=b-a;
+    while(d>Math.PI)d-=Math.PI*2;
+    while(d<-Math.PI)d+=Math.PI*2;
+    return a+d*t;
+  }
+
+  var TRIGGER=190;
+
+  function drawTentacle(ten,cx,cy,hw,hh,nx,ny,distToMouse,pct){
+    ten.phase+=ten.spd;
+    ten.phaseB+=ten.spdB;
+
+    var bx=cx+Math.cos(ten.currentAngle)*hw;
+    var by=cy+Math.sin(ten.currentAngle)*hh;
+
+    var facingX=Math.cos(ten.currentAngle), facingY=Math.sin(ten.currentAngle);
+    var align=(facingX*nx+facingY*ny);
+    var forward=Math.max(0.15,align);
+
+    var maxReach=Math.min(distToMouse*0.85,60+forward*160)*pct*ten.reachMult;
+
+    var SEGS=ten.segments;
+    var points=[];
+    for(var s=0;s<=SEGS;s++){
+      var prog=s/SEGS;
+      var curDirX=facingX+(nx-facingX)*prog*forward;
+      var curDirY=facingY+(ny-facingY)*prog*forward;
+      var curLen=Math.sqrt(curDirX*curDirX+curDirY*curDirY)||1;
+      curDirX/=curLen; curDirY/=curLen;
+      var perpX=-curDirY, perpY=curDirX;
+      var wob1=Math.sin(ten.phase+prog*Math.PI*3)*14*(1-prog*0.7)*pct*ten.wobbleDir;
+      var wob2=Math.sin(ten.phaseB+prog*Math.PI*5)*7*(1-prog*0.5)*pct;
+      var t_ease=Math.pow(prog,0.6);
+      points.push({
+        x:bx+curDirX*maxReach*t_ease+perpX*(wob1+wob2),
+        y:by+curDirY*maxReach*t_ease+perpY*(wob1+wob2),
+        prog:prog
+      });
+    }
+    if(points.length<2)return;
+
+    var leftPts=[], rightPts=[];
+    points.forEach(function(p,i){
+      var taper=Math.pow(1-p.prog,0.55);
+      var thickness=ten.thickBase*taper*pct*(0.7+forward*0.5);
+      var dir={x:0,y:0};
+      if(i<points.length-1){dir.x=points[i+1].x-p.x;dir.y=points[i+1].y-p.y;}
+      else{dir.x=p.x-points[i-1].x;dir.y=p.y-points[i-1].y;}
+      var dl=Math.sqrt(dir.x*dir.x+dir.y*dir.y)||1;
+      var perp={x:-dir.y/dl,y:dir.x/dl};
+      leftPts.push({x:p.x+perp.x*thickness,y:p.y+perp.y*thickness});
+      rightPts.push({x:p.x-perp.x*thickness,y:p.y-perp.y*thickness});
+    });
+
+    sctx.save();
+    sctx.beginPath();
+    sctx.moveTo(leftPts[0].x,leftPts[0].y);
+    leftPts.forEach(function(p,i){
+      if(i===0)return;
+      var prev=leftPts[i-1];
+      sctx.quadraticCurveTo(prev.x,prev.y,(prev.x+p.x)/2,(prev.y+p.y)/2);
+    });
+    var tipPt=points[points.length-1];
+    sctx.quadraticCurveTo(leftPts[leftPts.length-1].x,leftPts[leftPts.length-1].y,tipPt.x,tipPt.y);
+    sctx.quadraticCurveTo(rightPts[rightPts.length-1].x,rightPts[rightPts.length-1].y,rightPts[rightPts.length-1].x,rightPts[rightPts.length-1].y);
+    for(var ri=rightPts.length-1;ri>=0;ri--){
+      if(ri===rightPts.length-1)continue;
+      var p=rightPts[ri],next=rightPts[ri+1];
+      sctx.quadraticCurveTo(next.x,next.y,(next.x+p.x)/2,(next.y+p.y)/2);
+    }
+    sctx.closePath();
+
+    var grad=sctx.createLinearGradient(bx,by,tipPt.x,tipPt.y);
+    grad.addColorStop(0,'rgba(6,1,3,'+(0.96*pct)+')');
+    grad.addColorStop(0.35,'rgba(10,2,4,'+(0.93*pct)+')');
+    grad.addColorStop(0.65,'rgba(8,3,5,'+(0.9*pct)+')');
+    grad.addColorStop(0.82,'rgba(0,100,65,'+(0.88*pct)+')');
+    grad.addColorStop(1,'rgba(0,229,160,'+(0.95*pct)+')');
+    sctx.fillStyle=grad;
+    sctx.fill();
+
+    var sgrad=sctx.createLinearGradient(bx,by,tipPt.x,tipPt.y);
+    sgrad.addColorStop(0,'rgba(220,20,40,'+(0.75*pct)+')');
+    sgrad.addColorStop(0.5,'rgba(160,10,25,'+(0.5*pct)+')');
+    sgrad.addColorStop(1,'rgba(0,229,160,'+(0.85*pct)+')');
+    sctx.strokeStyle=sgrad;
+    sctx.lineWidth=1.2;
+    sctx.shadowColor='rgba(0,229,160,0.7)';
+    sctx.shadowBlur=6*pct*forward;
+    sctx.stroke();
+
+    var pulse=0.75+0.25*Math.sin(ten.phase*2);
+    sctx.beginPath();
+    sctx.arc(tipPt.x,tipPt.y,3.5*pct*pulse*forward,0,Math.PI*2);
+    sctx.fillStyle='rgba(0,229,160,'+(pct*pulse)+')';
+    sctx.shadowColor='rgba(0,229,160,1)';
+    sctx.shadowBlur=12*pct;
+    sctx.fill();
+    sctx.restore();
+  }
+
+  function loop(){
+    sctx.clearRect(0,0,sc.width,sc.height);
+
+    targets.forEach(function(t){
+      if(!t.btn)return;
+      var r=R(t.btn);
+      var d=D(mx,my,r.x,r.y);
+
+      var targetPct=d<TRIGGER?Math.pow(Math.max(0,1-d/TRIGGER),0.65):0;
+      t.pct+=(targetPct-t.pct)*0.065;
+
+      if(t.pct>0.01){
+        var dx=mx-r.x, dy=my-r.y;
+        var dist=Math.sqrt(dx*dx+dy*dy)||1;
+        var nx=dx/dist, ny=dy/dist;
+        var angleToMouse=Math.atan2(dy,dx);
+
+        t.tentacles.forEach(function(ten){
+          // Slowly rotate each tentacle toward the mouse — organic, unhurried
+          ten.currentAngle=lerpAngle(ten.currentAngle, angleToMouse, 0.008*t.pct);
+          drawTentacle(ten,r.x,r.y,r.w/2+5,r.h/2+5,nx,ny,dist,t.pct);
+        });
+
+        t.btn.style.boxShadow='0 0 '+(16*t.pct)+'px rgba(220,20,40,'+(0.55*t.pct)+')';
+        t.btn.style.borderColor='rgba(255,30,50,'+(0.85*t.pct)+')';
+
+        // Button drifts gently toward mouse (magnetic, not cursor-pulling)
+        var maxDrift=14;
+        var pullStrength=t.pct*(1-Math.min(1,d/TRIGGER));
+        var wantX=(mx-r.x)*0.12*pullStrength;
+        var wantY=(my-r.y)*0.10*pullStrength;
+        wantX=Math.max(-maxDrift,Math.min(maxDrift,wantX));
+        wantY=Math.max(-maxDrift,Math.min(maxDrift,wantY));
+        t.pullX+=(wantX-t.pullX)*0.09;
+        t.pullY+=(wantY-t.pullY)*0.09;
+        t.btn.style.transform='translate('+t.pullX.toFixed(2)+'px,'+t.pullY.toFixed(2)+'px)';
+
+      } else {
+        // Tentacles return to spread — fast lerp, snap to base when pct essentially zero
+        t.tentacles.forEach(function(ten){
+          if(t.pct<0.005){
+            ten.currentAngle=ten.baseAngle; // hard reset so next visit starts clean
+          } else {
+            ten.currentAngle=lerpAngle(ten.currentAngle,ten.baseAngle,0.12);
+          }
+        });
+        t.btn.style.boxShadow='';
+        t.btn.style.borderColor='';
+        t.pullX*=0.80; t.pullY*=0.80;
+        if(Math.abs(t.pullX)<0.2&&Math.abs(t.pullY)<0.2){
+          t.pullX=0; t.pullY=0; t.btn.style.transform='';
+        } else {
+          t.btn.style.transform='translate('+t.pullX.toFixed(2)+'px,'+t.pullY.toFixed(2)+'px)';
+        }
+      }
+
+      if(t.pct>0.62&&!t.morphed&&!t.glitching){
+        t.morphed=true; t.glitching=true;
+        glitch(t.btn,t.alt,function(){t.glitching=false;});
+      } else if(t.pct<0.18&&t.morphed&&!t.glitching){
+        t.morphed=false; t.glitching=true;
+        glitch(t.btn,t.orig,function(){t.glitching=false;});
+      }
+    });
+
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
+
+
+
+
+
+
+
+
 </script>
 
 <!-- GAME MODAL -->
